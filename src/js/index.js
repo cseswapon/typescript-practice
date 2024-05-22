@@ -66,31 +66,23 @@ var UserRequestMap = (_a = {},
     _a[UserRequest.ReadData] = "hello world",
     _a);
 console.log(UserRequestMap);
-// type 
-/* type Employee = {
-  name: string;
-  role: string;
+var user1 = {
+    name: "Swapon Saha",
+    role: "admin",
+    department: "account",
+    employeesManaged: 10,
 };
-
-type Manager = {
-  department: string;
-  employeesManaged: number;
-};
-
-type multipleType2 = Employee & Manager;
-
-const user1 = {
-    name: 1,
-    role: 'admin',
-    department: 'account',
-    employeeManaged:'kalam'
-} */
 var user2;
 var users;
 users = {
     userId: 1,
-    name: 'Mr.x'
+    name: "Mr.x",
 };
 user2 = [];
 user2.push(users);
 console.log(user2);
+var students = {
+    name: "swapon",
+    age: 10,
+};
+var mans = ["a", "b", "c", "c", []];

@@ -4,9 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+     <h1>Welcome to the Home Page</h1>
+    <p id="time-spent">Total time spent on this page: <span id="total-time"></span></p>
   </head>
   <body>
     <h1>Hello world</h1>
-    <script src="./src/js/index.js"></script>
+    <script src="./src/js/index2.js"></script>
+    <script>
+        function formatTime(seconds) {
+            const h = Math.floor(seconds / 3600).toString().padStart(2, '0');
+            const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, '0');
+            const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+            return `${h}:${m}:${s}`;
+        }
+        function updateTimeSpent() {
+            const timeSpentKey = 'homePageTimeSpent';
+            const entryTimeKey = 'homePageEntryTime';
+            let totalTimeSpent = parseFloat(localStorage.getItem(timeSpentKey)) || 0;
+            const entryTime = parseFloat(localStorage.getItem(entryTimeKey));
+            if (entryTime) {
+                const exitTime = performance.now();
+                const timeSpentThisVisit = (exitTime - entryTime) / 1000;
+                totalTimeSpent += timeSpentThisVisit;
+                localStorage.setItem(timeSpentKey, totalTimeSpent);
+                localStorage.removeItem(entryTimeKey);
+            }
+            document.getElementById('total-time').textContent = formatTime(totalTimeSpent);
+        }
+        function setEntryTime() {
+            const entryTimeKey = 'homePageEntryTime';
+            localStorage.setItem(entryTimeKey, performance.now());
+        }
+        setEntryTime();
+        window.addEventListener('beforeunload', updateTimeSpent);
+        window.addEventListener('load', updateTimeSpent);
+    </script>
   </body>
 </html>

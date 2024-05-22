@@ -83,10 +83,9 @@ const UserRequestMap = {
 };
 console.log(UserRequestMap);
 
+// type
 
-// type 
-
-/* type Employee = {
+type Employee = {
   name: string;
   role: string;
 };
@@ -96,29 +95,40 @@ type Manager = {
   employeesManaged: number;
 };
 
-type multipleType2 = Employee & Manager;
+type MultipleType2 = Employee & Manager;
 
-const user1 = {
-    name: 1,
-    role: 'admin',
-    department: 'account',
-    employeeManaged:'kalam'
-} */
-
+const user1: MultipleType2 = {
+  name: "Swapon Saha",
+  role: "admin",
+  department: "account",
+  employeesManaged: 10,
+};
 
 let user2: object[];
 
 let users: {
-    userId: number,
-    name: string,
-}
+  userId: number;
+  name: string;
+};
 
 users = {
-    userId: 1,
-    name:'Mr.x'
-}
+  userId: 1,
+  name: "Mr.x",
+};
 
 user2 = [];
 user2.push(users);
 
 console.log(user2);
+
+type Student = {
+  name: string;
+  age: number;
+};
+
+const students: Student = {
+  name: "swapon",
+  age: 10,
+};
+
+const mans: (string[] | string)[] = ["a","b","c","c",[]];
